@@ -6,6 +6,7 @@ import { ReactComponent as PizzaIcon } from '../../assets/svg/pizza.svg'
 import { ReactComponent as SodaPopIcon } from '../../assets/svg/soda.svg'
 import { ReactComponent as IceCreamIcon } from '../../assets/svg/ice-cream.svg'
 import MenuIcon from '../../assets/svg/menu.svg'
+import { NavLink } from 'react-router-dom'
 
 export default function Sidebar() {
 
@@ -23,28 +24,28 @@ export default function Sidebar() {
       <nav>
         <ul>
           <li>
-            <a href="" className='active'>
+            <NavLink to="/" className='active'>
               <BurguerIcon />
               <span>Hambúrguers</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="pizzas">
               <PizzaIcon />
               <span>Pizza</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="drinks">
               <SodaPopIcon />
               <span>Bebidas</span>
-            </a>
+            </NavLink>
           </li>
           <li>
-            <a href="">
+            <NavLink to="ice-cream">
               <IceCreamIcon />
               <span>Sobremesas</span>
-            </a>
+            </NavLink>
           </li>
         </ul>
       </nav>
