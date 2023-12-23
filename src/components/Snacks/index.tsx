@@ -2,8 +2,16 @@ import { currencyBRLFormat } from "../../helpers/currencyBRLFormat";
 import { Container } from "./styles";
 import { FiPlus } from "react-icons/fi";
 
+interface SnackObjectInterface {
+  id: number;
+  name: string;
+  image: string;
+  description: string;
+  price: number;
+}
+
 interface SnackInterface {
-  snacks: any[]; // TODO: change any
+  snacks: SnackObjectInterface[];
 }
 
 export function Snacks({ snacks }: SnackInterface) {

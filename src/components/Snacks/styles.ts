@@ -3,7 +3,7 @@ import { darken } from "polished";
 
 export const Container = styled.div`
   display: grid;
-  grid-template-columns: repeat(auto-fit, 300px);
+  grid-template-columns: repeat(auto-fit, minmax(300px, auto));
   gap: 1.75rem;
 
   @media (max-width: 500px) {
