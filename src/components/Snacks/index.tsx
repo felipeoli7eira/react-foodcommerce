@@ -1,4 +1,5 @@
 import { currencyBRLFormat } from "../../helpers/currencyBRLFormat";
+import SkeletonSnack from "./SkeletonSnack";
 import { Container } from "./styles";
 import { FiPlus } from "react-icons/fi";
 
@@ -16,22 +17,27 @@ interface SnackInterface {
 
 export function Snacks({ snacks }: SnackInterface) {
 
+  const Skeletons = () => [1, 2, 3, 4].map((n: number) => <SkeletonSnack key={n} />);
+
   return (
     <Container>
       {
-        snacks.map(snack => (
-          <div key={snack.id} className="snack-container">
-            <h2>{snack.name}</h2>
-            <img src={snack.image} alt={snack.description} loading="lazy" />
-            <p>{snack.description}</p>
-            <div>
-              <strong>{currencyBRLFormat(snack.price)}</strong>
-              <button type="button">
-                <FiPlus />
-              </button>
+        !snacks.length ?
+          <Skeletons />
+        :
+          (snacks.map(snack => (
+            <div key={snack.id} className="snack-container">
+              <h2>{snack.name}</h2>
+              <img src={snack.image} alt={snack.description} loading="lazy" />
+              <p>{snack.description}</p>
+              <div>
+                <strong>{currencyBRLFormat(snack.price)}</strong>
+                <button type="button">
+                  <FiPlus />
+                </button>
+              </div>
             </div>
-          </div>
-        ))
+          )))
       }
     </Container>
   );
