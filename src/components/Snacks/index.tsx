@@ -17,7 +17,14 @@ interface SnackInterface {
 
 export function Snacks({ snacks }: SnackInterface) {
 
-  const Skeletons = () => [1, 2, 3, 4].map((n: number) => <SkeletonSnack key={n} />);
+  const Skeletons = () => {
+    return (<>
+      <SkeletonSnack />
+      <SkeletonSnack />
+      <SkeletonSnack />
+      <SkeletonSnack />
+    </>);
+  };
 
   return (
     <Container>
