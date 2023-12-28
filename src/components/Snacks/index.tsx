@@ -1,21 +1,14 @@
 import { currencyBRLFormat } from "../../helpers/currencyBRLFormat";
+import { SnackInterface } from "../../interfaces/Snack/SnackInterface";
 import SkeletonSnack from "./SkeletonSnack";
 import { Container } from "./styles";
 import { FiPlus } from "react-icons/fi";
 
-interface SnackObjectInterface {
-  id: number;
-  name: string;
-  image: string;
-  description: string;
-  price: number;
+interface SnackPropsInterface {
+  snacks: SnackInterface[];
 }
 
-interface SnackInterface {
-  snacks: SnackObjectInterface[];
-}
-
-export function Snacks({ snacks }: SnackInterface) {
+export function Snacks({ snacks }: SnackPropsInterface) {
 
   const Skeletons = () => {
     return (<>

@@ -1,12 +1,13 @@
 import axios from 'axios'
+import { SnackInterface } from '../interfaces/Snack/SnackInterface'
 
 const api = axios.create({
   baseURL: process.env.REACT_APP_API_BASE_URL,
 })
 
-export const getBurguers = () => api.get('/burgers')
-export const getPizzas = () => api.get('/pizzas')
-export const getDrinks = () => api.get('/drinks')
-export const getIceCreams = () => api.get('/ice-creams')
+export const getBurguers = () => api.get<SnackInterface[]>('/burgers')
+export const getPizzas = () => api.get<SnackInterface[]>('/pizzas')
+export const getDrinks = () => api.get<SnackInterface[]>('/drinks')
+export const getIceCreams = () => api.get<SnackInterface[]>('/ice-creams')
 
 export default api

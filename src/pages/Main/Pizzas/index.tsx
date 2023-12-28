@@ -3,9 +3,10 @@ import { Head } from "../../../components/Head";
 import SnakeTitle from "../../../components/SnackTitle";
 import { Snacks } from "../../../components/Snacks";
 import { getPizzas } from "../../../services/api";
+import { SnackInterface } from "../../../interfaces/Snack/SnackInterface";
 
 export default function Pizzas() {
-  const [pizzas, setPizzas] = useState([]);
+  const [pizzas, setPizzas] = useState<SnackInterface[]>([]);
 
   useEffect(() => {
     try
