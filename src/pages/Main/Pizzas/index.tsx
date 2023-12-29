@@ -1,27 +1,11 @@
-import { useEffect, useState } from "react";
+import { useContext } from "react";
 import { Head } from "../../../components/Head";
 import SnakeTitle from "../../../components/SnackTitle";
 import { Snacks } from "../../../components/Snacks";
-import { getPizzas } from "../../../services/api";
-import { SnackInterface } from "../../../interfaces/Snack/SnackInterface";
+import { SnackContext } from '../../../contexts/SnackContext';
 
 export default function Pizzas() {
-  const [pizzas, setPizzas] = useState<SnackInterface[]>([]);
-
-  useEffect(() => {
-    try
-    {
-      (async () => {
-        const response = await getPizzas();
-
-        setPizzas(response.data);
-      })()
-    }
-    catch(error)
-    {
-      console.log(error);
-    }
-  }, []);
+  const { pizzas } = useContext(SnackContext)
 
   return (<>
     <Head title='Pizzas' />
