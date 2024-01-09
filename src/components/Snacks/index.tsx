@@ -1,4 +1,5 @@
 import { currencyBRLFormat } from "../../helpers/currencyBRLFormat";
+import { useCart } from "../../hooks/useCart";
 import { SnackInterface } from "../../interfaces/Snack/SnackInterface";
 import SkeletonSnack from "./SkeletonSnack";
 import { Container } from "./styles";
@@ -9,6 +10,8 @@ interface SnackPropsInterface {
 }
 
 export function Snacks({ snacks }: SnackPropsInterface) {
+
+  const { addToCart } = useCart();
 
   const Skeletons = () => {
     return (<>
@@ -32,7 +35,7 @@ export function Snacks({ snacks }: SnackPropsInterface) {
               <p>{snack.description}</p>
               <div>
                 <strong>{currencyBRLFormat(snack.price)}</strong>
-                <button type="button">
+                <button type="button" onClick={() => addToCart(snack)}>
                   <FiPlus />
                 </button>
               </div>
