@@ -11,7 +11,7 @@ interface SnackPropsInterface {
 
 export function Snacks({ snacks }: SnackPropsInterface) {
 
-  const { addToCart } = useCart();
+  const { addToCart, cart } = useCart();
 
   const Skeletons = () => {
     return (<>
@@ -28,19 +28,28 @@ export function Snacks({ snacks }: SnackPropsInterface) {
         !snacks.length ?
           <Skeletons />
         :
-          (snacks.map(snack => (
-            <div key={snack.id} className="snack-container">
-              <h2>{snack.name}</h2>
-              <img src={snack.image} alt={snack.description} loading="lazy" />
-              <p>{snack.description}</p>
-              <div>
-                <strong>{currencyBRLFormat(snack.price)}</strong>
-                <button type="button" onClick={() => addToCart(snack)}>
-                  <FiPlus />
-                </button>
+          (snacks.map(snack => {
+            const snackExistent = cart.find(
+              cart_item => cart_item.id === snack.id && cart_item.snack === snack.snack
+            )
+            return (
+              <div key={snack.id} className="snack-container">
+                {snackExistent && (
+                  <span className="quantity">{snackExistent.quantity}</span>
+                )}
+
+                <h2>{snack.name}</h2>
+                <img src={snack.image} alt={snack.description} loading="lazy" />
+                <p>{snack.description}</p>
+                <div>
+                  <strong>{currencyBRLFormat(snack.price)}</strong>
+                  <button type="button" onClick={() => addToCart(snack)}>
+                    <FiPlus />
+                  </button>
+                </div>
               </div>
-            </div>
-          )))
+            )
+          }))
       }
     </Container>
   );

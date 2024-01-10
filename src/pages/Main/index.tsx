@@ -2,6 +2,7 @@ import Sidebar from '../../components/Sidebar'
 import { Container } from './styles'
 import LogoImg from '../../assets/svg/logo.svg';
 import { Outlet } from 'react-router-dom';
+import MyOrders from '../../components/MyOrders';
 
 export default function Main() {
   return (
@@ -13,6 +14,8 @@ export default function Main() {
 
         <Outlet />
       </section>
+
+      <MyOrders />
     </Container>
   )
 }

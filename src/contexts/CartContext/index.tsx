@@ -33,13 +33,36 @@ export function CartProvider({ children }: CartProviderPropsInterface) {
   const [cart, setCart] = useState<SnackPropsInterface[]>([]);
 
   function addToCart(item: SnackInterface): void {
+    const snackExistsIntoCart = cart.find(
+      cart_item => cart_item.snack === item.snack && cart_item.id === item.id
+    );
+
+    console.clear()
+
+    // update cart
+    if (snackExistsIntoCart) {
+      console.log('update cart')
+      const updatedCart = cart.map(cart_item => {
+        if (cart_item.id === item.id) {
+          cart_item.quantity += 1;
+          cart_item.subtotal = cart_item.quantity * cart_item.price;
+        }
+
+        return cart_item;
+      });
+
+      setCart(updatedCart);
+      console.log(updatedCart);
+      return
+    }
+
+    console.log('add cart')
+    // add into cart
     const newItem = { ...item, quantity: 1, subtotal: item.price };
     const cloneCart = [...cart, newItem];
 
-    console.clear();
-    console.log(cloneCart);
-
     setCart(cloneCart);
+    console.log(cloneCart);
   }
 
   return (
