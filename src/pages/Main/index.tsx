@@ -10,7 +10,7 @@ export default function Main() {
       <Sidebar />
 
       <section>
-        <img src={LogoImg} alt="Food" />
+        {/* <img src={LogoImg} alt="Food" /> */}
 
         <Outlet />
       </section>
