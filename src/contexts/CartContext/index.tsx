@@ -1,5 +1,7 @@
 import { createContext, ReactNode, useState } from 'react'
 import { SnackInterface } from '../../interfaces/Snack/SnackInterface';
+import { toast } from 'react-toastify';
+import snackEmoji from '../../helpers/snackEmoji';
 
 interface SnackPropsInterface extends SnackInterface {
   quantity: number;
@@ -62,7 +64,7 @@ export function CartProvider({ children }: CartProviderPropsInterface) {
     const cloneCart = [...cart, newItem];
 
     setCart(cloneCart);
-    console.log(cloneCart);
+    toast.success(snackEmoji(item.snack).concat(' ', item.name, ' adicionado(a).'));
   }
 
   return (
