@@ -6,7 +6,7 @@ export default function MyOrders() {
 
   const { cart } = useCart();
 
-  return <ButtonGoToCartDetails to={''}>
+  return <ButtonGoToCartDetails to={'cart'}>
     <span>Meu pedido</span>
     <CartIcon />
 
