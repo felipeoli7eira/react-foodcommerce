@@ -1,9 +1,13 @@
 import { currencyBRLFormat } from "../../../../../helpers/currencyBRLFormat";
 import { useCart } from "../../../../../hooks/useCart";
 import { Container } from "./style"
+import plusImage from '../../../../../assets/svg/circle-plus.svg';
+import minusImage from '../../../../../assets/svg/circle-minus.svg';
+import { GoTrash } from "react-icons/go";
+
 
 export default function TableDesktop() {
-  const { cart } = useCart();
+  const { cart, removeFromCart } = useCart();
 
   return (
     <Container>
@@ -29,13 +33,25 @@ export default function TableDesktop() {
                 {/* <span>{item.price}</span> */}
               </td>
               <td>
-                {item.quantity}
+                <div className="quantity-controller">
+                  <button type="button" onClick={() => console.log('adicionar 1')}>
+                    {/* <img src={plusImage} alt="adicionar quantidade" /> */} +
+                  </button>
+                  <span>
+                    {item.quantity.toString().padStart(2, '0')}
+                  </span>
+                  <button type="button" onClick={() => console.log('remover 1')}>
+                    {/* <img src={minusImage} alt="remover quantidade" /> */} -
+                  </button>
+                </div>
               </td>
               <td>
-                {currencyBRLFormat(item.subtotal)}
+                <span>{currencyBRLFormat(item.subtotal)}</span>
               </td>
               <td>
-                {''}
+                <button type="button" onClick={() => removeFromCart(item)}>
+                  <GoTrash />
+                </button>
               </td>
             </tr>
           ))}

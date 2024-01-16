@@ -21,9 +21,11 @@ interface RemoveItemCartPropsInterface {
 
 interface CartContextPropsInterface {
   cart: SnackPropsInterface[];
-  addToCart(snack: SnackInterface): void;
-  // updateCart({id, snack, newQuantity}: UpdateCartPropsInterface): void;
-  // removeFromCart({id, item}: RemoveItemCartPropsInterface): void;
+  addToCart: (snack: SnackInterface) => void;
+  removeFromCart: (snack: SnackInterface) => void;
+  updateCart: (snack: SnackInterface) => void;
+  incrementItem: (snack: SnackInterface) => void;
+  decrementItem: (snack: SnackInterface) => void;
 }
 
 export const CartContext = createContext({} as CartContextPropsInterface);
@@ -67,9 +69,40 @@ export function CartProvider({ children }: CartProviderPropsInterface) {
     toast.success(snackEmoji(item.snack).concat(' ', item.name, ' adicionado(a).'));
   }
 
+  function updateCart(snack: SnackInterface) {
+    return;
+  }
+
+  function removeFromCart(snack: SnackInterface) {
+    const newCartItems = cart.filter(
+      (item: SnackPropsInterface) => !(item.id === snack.id && item.snack === snack.snack),
+    )
+
+    setCart(newCartItems);
+  }
+
+  function incrementItem(snack: SnackInterface) {
+    // updateCart(id, snack, snack?.quantity + 1);
+    return
+  }
+
+  function decrementItem(snack: SnackInterface) {
+    // updateCart(id, snack, snack?.quantity - 1);
+    return
+  }
+
+  // function confirmOrder() {}
+
   return (
-    <CartContext.Provider value={{ cart, addToCart }}>
+    <CartContext.Provider value={{
+      cart,
+      addToCart,
+      updateCart,
+      removeFromCart,
+      incrementItem,
+      decrementItem,
+    }}>
       {children}
     </CartContext.Provider>
-  );
+  )
 }

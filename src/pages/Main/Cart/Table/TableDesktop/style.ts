@@ -25,11 +25,11 @@ export const Container = styled.main`
 
     td {
       padding: 1.5rem 1rem 1.5rem 1rem;
-      padding-top: 1.5rem;
+      /* padding-top: 1.5rem; */
       border-bottom: 1px solid ${({ theme }) => theme.colors.gray900};
 
       h4 {
-        margin-bottom: 0.5rem;
+        /* margin-bottom: 0.5rem; */
         font-weight: 400;
         font-size: 1.125rem;
       }
@@ -39,7 +39,37 @@ export const Container = styled.main`
         font-size: 1.5rem;
       }
 
-      /* quantidade */
+      div.quantity-controller {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+        /* border: 1px solid red; */
+        height: 2rem;
+
+        span {
+          /* border: 1px solid red;  */
+        }
+
+        button {
+          height: 2rem !important;
+          width: 2rem !important;
+          border-radius: 50%;
+          background: none;
+          /* flex: 0; */
+          border: 0;
+          color: ${({theme}) => theme.colors.yellow};
+          font-size: 1.25rem;
+          font-weight: bold;
+          /* display: flex;
+          align-items: center;
+          justify-content: center; */
+
+          /* img {
+            width: 1.25rem;
+            border: 1px solid red;
+          } */
+        }
+      }
 
       h5 {
         font-weight: 700;
@@ -53,9 +83,9 @@ export const Container = styled.main`
 
         img {
           object-fit: cover;
-          width: 7.5rem;
-          height: 7.5rem;
-          border-radius: 8px;
+          width: 5.5rem;
+          height: 5.5rem;
+          border-radius: 15px;
         }
       }
 
@@ -73,6 +103,20 @@ export const Container = styled.main`
         padding-right: 0;
 
         /* ação / deletar */
+        button {
+          background: none;
+          border: none;
+          width: 100%;
+          display: flex;
+          align-items: center;
+          justify-content: end;
+
+          svg {
+            fill: ${({theme}) => theme.colors.yellow};
+            width: 1.5rem;
+            height: 1.5rem;
+          }
+        }
       }
     }
   }
